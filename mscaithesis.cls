@@ -4,6 +4,10 @@
 
 \LoadClass[10pt]{book}
 
+\newif\if@license{\@licensefalse}
+\DeclareOption{license}{\@licensetrue}
+\ProcessOptions\relax
+
 \RequirePackage[paper=a4paper,
                 top=2cm,
                 bottom=2cm,
@@ -13,6 +17,7 @@
 \RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{changepage}
+\RequirePackage{etoolbox}
 
 % Same fonts as acmart/master information studies
 \RequirePackage[T1]{fontenc}
@@ -97,4 +102,67 @@
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     \addcontentsline{toc}{chapter}{List of Tables}%
+}
+
+\def\studentnumber#1{\gdef\@studentnumber{#1}}
+\def\period#1{\gdef\@period{#1}}
+\def\credits#1{\gdef\@credits{#1}}
+\def\examiner#1{\gdef\@examiner{#1}}
+\def\dailysupervisor#1{\gdef\@dailysupervisor{#1}}
+\def\uvasupervisor#1{\gdef\@uvasupervisor{#1}}
+\def\addsupervisor#1{\gdef\@addsupervisor{#1}}
+\renewcommand{\maketitle}{
+        \begin{titlepage}
+                \centering
+
+                \vspace{5cm}
+
+                \textsc{\Large MSc Artificial Intelligence}\\[0.2cm]
+                \textsc{\Large Master Thesis}\\[0.5cm]
+
+                \rule{.8\linewidth}{0.5mm} \\[0.4cm]
+                {\huge \bfseries \@title}\\[0.4cm]
+                \rule{.8\linewidth}{0.5mm} \\
+
+                \vspace{2cm}
+                {\large by\par}
+                {\Large \@author\par}
+                {\large\@studentnumber\par}
+
+                \vspace{1cm}
+
+                {\large\@period\par}
+                {\large\@credits\par}
+
+                \vspace{1cm}
+
+                \begin{minipage}[t]{.5\textwidth}
+                        Supervisor: \@dailysupervisor \hfill\\
+                        \ifdefempty{\@uvasupervisor}{}{University Supervisor: \@uvasupervisor \hfill\\}
+                        \ifdefempty{\@addsupervisor}{}{Additional Supervisor: \@addsupervisor \hfill\\}
+
+
+                        ~\hfill Examiner: \@examiner
+                \end{minipage}
+
+                \vfill
+                \vspace{2cm}
+                \includegraphics[width=0.5\textwidth]{media/titlepage/uvalogo_g_instituut_voor_informatica.eps}
+                \vspace{1cm}
+        \end{titlepage}
+
+        \newpage
+        % \restoregeometry
+        \thispagestyle{empty}
+        ~
+        \if@license
+                \vfill
+                \noindent\textit{\let\\=\relax\@title}\\
+
+                \noindent This work by \@author is licensed under \textbf{CC-BY-NC}.\\
+                \noindent\url{https://creativecommons.org/licenses/by-nc/4.0}\\
+                \includegraphics[width=0.2\textwidth]{media/titlepage/by-nc.png}\\
+
+                \noindent This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only.
+        \fi
 }
