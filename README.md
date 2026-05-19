@@ -15,3 +15,15 @@ Write your discussion here. Furthermore, give an outlook on what could be added 
 - **Conclusion:** Answer each research question and go into how the limitations of the study qualify the conclusion.
 
 Obviously, this structure is flexible, but in general this is how not only a thesis but also papers and in general great research work is strucutred.
+
+## Page limit
+The page limit remains at:
+- 40 pages for the single-column mode;
+- 35 pages for the double-column mode.
+
+Page count starts at the introduction, and does not include references or appendix.
+
+**Important notes:**
+
+- Being within the page limit does not mean that a thesis is not too long: being too verbose and discussing irrelevant elements at length does not make a good thesis.
+- A thesis should be readable and understandable even without opening the appendix: see it as a "bonus" for the reader

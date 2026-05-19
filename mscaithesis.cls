@@ -14,7 +14,9 @@
                 left=1.5cm,
                 right=1cm]{geometry}
 
-\RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
+\RequirePackage[colorlinks=true,
+                citecolor=blue,
+                linkcolor=black]{hyperref}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{changepage}
 \RequirePackage{etoolbox}
